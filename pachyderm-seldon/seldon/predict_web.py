@@ -2,6 +2,7 @@ import sys
 from skimage import io
 import matplotlib.pyplot as plt
 from seldon_core.seldon_client import SeldonClient
+import gradio as gr
 
 """"
 if __name__ == '__main__':
