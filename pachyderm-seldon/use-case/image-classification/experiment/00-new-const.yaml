@@ -1,6 +1,6 @@
-name: 00-dogcat_single
-workspace: nanos
-project: 00-demo
+name: KT-dogcat_single
+workspace: Kate
+project: dog-cat
 data:
     pachyderm:
       host:

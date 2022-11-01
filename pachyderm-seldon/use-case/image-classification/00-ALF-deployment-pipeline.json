@@ -1,12 +1,12 @@
 {
   "pipeline": {
-    "name": "new-deploy-update"
+    "name": "kt-deploy-update"
   },
   "description": "Deploys a model into production via the Seldon Deploy REST APIs.",
   "input": {
     "pfs": {
       "name": "data",
-      "repo": "new-model",
+      "repo": "kt-dogs-and-cats-model",
       "branch": "master",
       "glob": "/"
     }
