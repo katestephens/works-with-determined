@@ -1,6 +1,6 @@
-name: dogcat_single
-workspace: nanos
-project: PDS
+name: KT-dogcat_single
+workspace: Kate
+project: dog-cat
 data:
     pachyderm:
       host:
@@ -25,3 +25,5 @@ resources:
     slots_per_trial: 1
 max_restarts: 0
 debug: true
+profiling:
+    enabled: true

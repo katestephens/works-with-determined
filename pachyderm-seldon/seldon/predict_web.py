@@ -4,33 +4,12 @@ import matplotlib.pyplot as plt
 from seldon_core.seldon_client import SeldonClient
 import gradio as gr
 
-""""
-if __name__ == '__main__':
-    seldon_ip = sys.argv[1]
-    image = io.imread("dog.png")
-
-    sc = SeldonClient(deployment_name="dogcat-deploy", namespace="seldon", gateway_endpoint=f"{seldon_ip}:80", gateway="istio")
-    out = sc.predict(transport="rest", data=image)
-
-    if out.success:
-        res = out.response['data']['ndarray'][0]
-        plt.imshow(image)
-        plt.title(f"Prediction: {res}")
-        plt.show()
-"""
-
-# Psuedo-code - Kate
 def dog_or_cat(image):
-    seldon_ip = sys.argv[1]
-    #we don't need io.imread("imagefile.png") because we already have an image and should be able to just use it
-    sc = SeldonClient(deployment_name="dogcat-deploy", namespace="seldon", gateway_endpoint=f"{seldon_ip}:80", gateway="istio")
+    seldon_ip = "10.10.160.183"
+    sc = SeldonClient(deployment_name="kt-deploy-update", namespace="seldon", gateway_endpoint=f"{seldon_ip}", gateway="istio")
     out = sc.predict(transport="rest", data=image)
-    # if out.success: ## Not sure we need this, Gradio usually handles errors...
     res = out.response['data']['ndarray'][0]
-    plt.imshow(image)
-    plt.title(f"Prediction: {res}")
-    plt.show()
+    return res
 
-if __name__ == '__main__':
-    demo = gr.Interface(fn=dog_or_cat, inputs="image", outputs="image")
-    demo.launch()
+demo = gr.Interface(fn=dog_or_cat, inputs="image", outputs="text", examples=["Yogi.png","Zoey.png","cat.png"])
+demo.launch(share=True)
