@@ -11,5 +11,10 @@ def dog_or_cat(image):
     res = out.response['data']['ndarray'][0]
     return res
 
-demo = gr.Interface(fn=dog_or_cat, inputs="image", outputs="text", examples=["Yogi.png","Zoey.png","cat.png"])
-demo.launch(share=True)
+title_text="Dog or Cat"
+description_text="Pick and example or upload an image of a dog or a cat to see if our model can correctly identify it!"
+example_images=["Yogi.png","Zoey.png","cat.png"]
+
+#Caching these examples for the demo
+demo = gr.Interface(fn=dog_or_cat, inputs="image", outputs="text", title=title_text, description=description_text, examples=example_images, cache_examples=True)
+demo.launch()
